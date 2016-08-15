@@ -9,13 +9,14 @@ def run():
 	print "hello world"
 #	device.pixel(4, 4, 1, redraw=False)
 #	device.flush()
-#	time.sleep(0.01)
+	time.sleep(10)
 
 def main():
 	try:
 		run()
-  		except KeyboardInterrupt:
-			sys.exit(0)
+	except KeyboardInterrupt:
+		print "Exiting..."
+		sys.exit(0)
 
 if __name__ == "__main__":
 	main()
