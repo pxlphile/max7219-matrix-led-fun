@@ -12,13 +12,13 @@ device = None
 
 picture = [\
 	[0,0,0,0,0,0,0,0],\
+        [0,0,1,0,0,0,1,0],\
+        [0,1,0,1,0,1,0,1],\
         [0,0,0,0,0,0,0,0],\
         [0,0,0,0,0,0,0,0],\
-        [0,0,0,0,0,0,0,0],\
-        [0,0,0,0,0,0,0,0],\
-        [0,0,0,0,0,0,0,0],\
-        [0,0,0,0,0,0,0,0],\
-        [0,0,0,0,0,0,0,0]]
+        [0,1,0,0,0,0,0,1],\
+        [0,0,1,0,0,0,1,0],\
+        [0,0,0,1,1,1,0,0]]
 
 def run():
 	global device
@@ -38,15 +38,20 @@ def drawLine(currentY):
 			device.pixel(currentX, currentY, 7, redraw=False)
 
 def resolveBitmapAt(currentX, currentY):
-	if picture[currentY][currentX] == 0:
+	if picture[currentY][currentX] == 1:
 		return True
 	return False
+
+def cleanUp():
+	device.show_message(" ")
 
 def main():
 	try:
 		run()
+		cleanUp()
 	except KeyboardInterrupt:
 		print "Exiting..."
+		cleanUp()
 		sys.exit(0)
 
 if __name__ == "__main__":
